@@ -3,6 +3,7 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 import * as path from 'path';
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 import * as webpack from 'webpack';
 import nodeExternals from 'webpack-node-externals';
 
@@ -38,12 +39,17 @@ const config: webpack.Configuration = {
 
   externals: [nodeExternals()],
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts'],
+    plugins: [
+      new TsconfigPathsPlugin({
+        configFile: './tsconfig.json',
+      }),
+    ],
   },
   devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'main.js',
   },
 };
 
