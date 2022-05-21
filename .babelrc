@@ -5,7 +5,10 @@
       "module-resolver",
       {
         "alias": {
-          "@interface": "./src/interface/"
+          "@interface": "./src/interface/",
+          "@entity": "./src/entity/",
+          "@base": "./src/base/",
+          "@service": "./src/service/"
         }
       }
     ]
