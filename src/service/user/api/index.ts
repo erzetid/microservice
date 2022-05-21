@@ -35,5 +35,19 @@ const addHandler = new Handler('', {
   },
 });
 
-const UserApi = new Api(2000, [getHandler, addHandler]);
+const getUserHandler = new Handler('', {
+  childPath: '/:email', // :email is a placeholder for the email of the user
+  method: 'get',
+  function: async (req, res) => {
+    try {
+      const { email } = req.params;
+      const data = await userService.getUser(email);
+      res.json(data);
+    } catch (error: any) {
+      res.status(500).json(error?.message);
+    }
+  },
+});
+
+const UserApi = new Api(2000, [getHandler, addHandler, getUserHandler]);
 export default UserApi;
