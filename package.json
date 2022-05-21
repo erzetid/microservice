@@ -43,6 +43,7 @@
     "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "manggon": "^1.0.0"
   }
 }
