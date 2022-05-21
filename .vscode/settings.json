@@ -1,0 +1,7 @@
+{
+  "cSpell.words": ["fahrizalm", "lcov", "manggon", "Serializers", "unmocked"],
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  }
+}
