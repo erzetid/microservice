@@ -83,6 +83,9 @@ export default {
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
     '^@interface/(.*)$': '<rootDir>/src/interface/$1',
+    '^@entity/(.*)$': '<rootDir>/src/entity/$1',
+    '^@base/(.*)$': '<rootDir>/src/base/$1',
+    '^@service/(.*)$': '<rootDir>/src/service/$1',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
