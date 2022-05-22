@@ -10,7 +10,11 @@ export default class AuthService implements IAuthService {
     return await axios
       .get(`http://localhost:2000/${email}`)
       .then((res) => {
-        return res.data;
+        const user = res.data;
+        if (user.password === password) {
+          return 'Login success';
+        }
+        throw new Error('Invalid password');
       })
       .catch((error: AxiosError) => {
         if (error.response) throw new Error(`${error.response.data}`);
@@ -21,7 +25,16 @@ export default class AuthService implements IAuthService {
   logout(email: string): Promise<string> {
     throw new Error('Method not implemented.');
   }
-  register(email: string, password: string): Promise<string> {
-    throw new Error('Method not implemented.');
+  async register(email: string, password: string): Promise<string> {
+    return await axios
+      .post('http://localhost:2000', { email, password })
+      .then((res) => {
+        return 'Register success';
+      })
+      .catch((error: AxiosError) => {
+        if (error.response) throw new Error(`${error.response.data}`);
+        else if (error.request) throw new Error(error.request);
+        else throw new Error(error.message);
+      });
   }
 }

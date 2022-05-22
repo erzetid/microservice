@@ -10,10 +10,11 @@ const authService = new AuthService();
 
 const loginHandler = new Handler('', {
   childPath: '/login',
-  method: 'get',
+  method: 'post',
   function: async (req, res) => {
     try {
-      const data = await authService.login('erzetid@gmail.com', 'password');
+      const { email, password } = req.body;
+      const data = await authService.login(email, password);
       res.json(data);
     } catch (error: any) {
       res.status(500).json(error?.message);
@@ -21,5 +22,20 @@ const loginHandler = new Handler('', {
   },
 });
 
-const AuthApi = new Api(2001, [loginHandler]);
+const registerHandler = new Handler('', {
+  childPath: '/register',
+  method: 'post',
+  function: async (req, res) => {
+    try {
+      const { email, password } = req.body;
+      const data = await authService.register(email, password);
+
+      res.json(data);
+    } catch (error: any) {
+      res.status(500).json(error?.message);
+    }
+  },
+});
+
+const AuthApi = new Api(2001, [loginHandler, registerHandler]);
 export default AuthApi;
