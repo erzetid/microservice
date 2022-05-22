@@ -4,6 +4,5 @@
 // https://opensource.org/licenses/MIT
 export default interface IAuthService {
   login(email: string, password: string): Promise<string>;
-  logout(email: string): Promise<string>;
   register(email: string, password: string): Promise<string>;
 }

@@ -22,9 +22,6 @@ export default class AuthService implements IAuthService {
         else throw new Error(error.message);
       });
   }
-  logout(email: string): Promise<string> {
-    throw new Error('Method not implemented.');
-  }
   async register(email: string, password: string): Promise<string> {
     return await axios
       .post('http://localhost:2000', { email, password })
